@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Naveed Motors | Premium Car Showcase</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+section{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:60px;
+    font-weight:700;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,.5);
+    backdrop-filter:blur(12px);
+    z-index:999;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:2rem;
+    font-weight:800;
+    color:#00bfff;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    transition:.3s;
+    font-weight:500;
+}
+
+nav ul li a:hover{
+    color:#00bfff;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.85)),
+    url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1974&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero-content{
+    max-width:900px;
+    padding:20px;
+}
+
+.hero-content h1{
+    font-size:6rem;
+    font-weight:800;
+    line-height:1;
+    margin-bottom:20px;
+    text-transform:uppercase;
+}
+
+.hero-content p{
+    color:#d0d0d0;
+    line-height:1.9;
+    margin-bottom:40px;
+}
+
+.hero-btn{
+    display:inline-block;
+    padding:16px 40px;
+    background:linear-gradient(135deg,#0077ff,#00bfff);
+    color:white;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:600;
+    transition:.4s;
+}
+
+.hero-btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(0,119,255,.4);
+}
+
+/* ================= CARS ================= */
+
+.car-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
+}
+
+.car-card{
+    background:#111;
+    border-radius:28px;
+    overflow:hidden;
+    transition:.5s;
+    transform-style:preserve-3d;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+}
+
+.car-card:hover{
+    transform:rotateY(5deg) translateY(-10px);
+}
+
+.car-card img{
+    height:230px;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.car-card:hover img{
+    transform:scale(1.05);
+}
+
+.car-content{
+    padding:28px;
+}
+
+.car-content h2{
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.price{
+    color:#00bfff;
+    font-size:1.3rem;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.hp{
+    color:#bbb;
+    margin-bottom:25px;
+}
+
+.card-btn{
+    padding:13px 30px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(135deg,#0077ff,#00bfff);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.card-btn:hover{
+    transform:scale(1.05);
+}
+
+/* ================= SPECS ================= */
+
+.specs-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.spec-box{
+    background:#111;
+    padding:45px 30px;
+    border-radius:28px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.4s;
+}
+
+.spec-box:hover{
+    transform:translateY(-10px);
+}
+
+.spec-box i{
+    font-size:3rem;
+    color:#00bfff;
+    margin-bottom:20px;
+}
+
+.spec-box h2{
+    margin-bottom:10px;
+}
+
+.spec-box p{
+    color:#bbb;
+    line-height:1.8;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    background:#0b0b0b;
+    text-align:center;
+}
+
+.contact h2{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.contact p{
+    color:#bbb;
+}
+
+.contact-info{
+    margin-top:40px;
+}
+
+.contact-info div{
+    margin:18px 0;
+    font-size:1.1rem;
+}
+
+.contact-info i{
+    color:#00bfff;
+    margin-right:12px;
+}
+
+.contact-info a{
+    color:white;
+    text-decoration:none;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#020202;
+    padding:40px 8%;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.socials{
+    margin-bottom:20px;
+}
+
+.socials a{
+    display:inline-flex;
+    width:52px;
+    height:52px;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+    border-radius:50%;
+    margin:0 10px;
+    color:white;
+    text-decoration:none;
+    transition:.4s;
+    font-size:1.2rem;
+}
+
+.socials a:hover{
+    background:#00bfff;
+    transform:translateY(-5px);
+}
+
+footer p{
+    color:#888;
+}
+
+/* ================= MODAL ================= */
+
+.car-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:.4s;
+    z-index:9999;
+    padding:20px;
+}
+
+.car-modal.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal-content{
+    width:100%;
+    max-width:1100px;
+    background:#111;
+    border-radius:30px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    animation:show .5s ease;
+}
+
+@keyframes show{
+
+    from{
+        transform:translateY(50px) scale(.95);
+        opacity:0;
+    }
+
+    to{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+
+}
+
+.modal-content img{
+    height:100%;
+    object-fit:cover;
+}
+
+.modal-text{
+    padding:50px;
+}
+
+.modal-text h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.modal-price{
+    color:#00bfff;
+    font-size:1.5rem;
+    margin-bottom:20px;
+    font-weight:600;
+}
+
+.modal-text p{
+    color:#ccc;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.modal-specs{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.modal-box{
+    background:#181818;
+    padding:25px;
+    border-radius:20px;
+}
+
+.modal-box h3{
+    margin-bottom:10px;
+}
+
+.modal-box p{
+    color:#00bfff;
+    margin:0;
+    font-weight:600;
+}
+
+.close-btn{
+    position:absolute;
+    top:30px;
+    right:40px;
+    font-size:2.5rem;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.close-btn:hover{
+    color:#00bfff;
+    transform:rotate(90deg);
+}
+
+/* ================= REVEAL ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:950px){
+
+    .modal-content{
+        grid-template-columns:1fr;
+        max-height:90vh;
+        overflow-y:auto;
+    }
+
+    .modal-content img{
+        height:320px;
+    }
+
+    .hero-content h1{
+        font-size:4rem;
+    }
+
+}
+
+@media(max-width:768px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero-content h1{
+        font-size:3rem;
+    }
+
+    .section-title{
+        font-size:2.2rem;
+    }
+
+    .modal-text{
+        padding:30px;
+    }
+
+    .modal-text h1{
+        font-size:2rem;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">Naveed Motors</div>
+
+    <ul>
+        <li><a href="#cars">Cars</a></li>
+        <li><a href="#specs">Specs</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content reveal active">
+
+        <h1>Luxury Car Showcase</h1>
+
+        <p>
+            Explore premium sports cars, luxury SUVs,
+            and modern performance vehicles with cinematic visuals.
+        </p>
+
+        <a href="#cars" class="hero-btn">
+        Explore Cars
+        </a>
+
+    </div>
+
+</section>
+
+<!-- CARS -->
+
+<section id="cars">
+
+    <h1 class="section-title reveal">
+    Featured Cars
+    </h1>
+
+    <div class="car-container">
+
+        <!-- CAR 1 -->
+
+        <div class="car-card reveal">
+
+            <img src="https://www.mansory.com/cdn-cgi/image/format=avif,quality=90/https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/698e39d4713ab648b25cb847_CarbonadoXMain.webp">
+
+            <div class="car-content">
+
+                <h2>Lamborghini X</h2>
+
+                <div class="price">$320,000</div>
+
+                <div class="hp">950 Horsepower</div>
+
+                <button class="card-btn"
+                onclick="openCar('lambo')">
+                View Details
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAR 2 -->
+
+        <div class="car-card reveal">
+
+            <img src="https://hips.hearstapps.com/hmg-prod/images/2024-ferrari-812-gts-101-64caae4038b21.jpeg?crop=0.547xw:0.548xh;0.127xw,0.342xh&resize=1200:*">
+
+            <div class="car-content">
+
+                <h2>Ferrari GT</h2>
+
+                <div class="price">$280,000</div>
+
+                <div class="hp">870 Horsepower</div>
+
+                <button class="card-btn"
+                onclick="openCar('ferrari')">
+                View Details
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAR 3 -->
+
+        <div class="car-card reveal">
+
+            <img src="https://www.lloydmotorgroup.com/VehicleLibrary/551625-1WdJvppmQkO35364bUtJjw.jpg?height=1297.5&heightratio=0.75&mode=crop&upscale=true&width=1730">
+
+            <div class="car-content">
+
+                <h2>BMW Shadow</h2>
+
+                <div class="price">$190,000</div>
+
+                <div class="hp">760 Horsepower</div>
+
+                <button class="card-btn"
+                onclick="openCar('bmw')">
+                View Details
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAR 4 -->
+
+        <div class="car-card reveal">
+
+            <img src="https://images.dealersync.com/2201/Photos/1015396/wm_04b6189bde7f45ec92681a593087d54c_1015396.jpg?format=webp&width=1530&_=b04422194d369706dd64d1ad8340d5adabcd58d8">
+
+            <div class="car-content">
+
+                <h2>Honda Civic RS</h2>
+
+                <div class="price">$45,000</div>
+
+                <div class="hp">180 Horsepower</div>
+
+                <button class="card-btn"
+                onclick="openCar('civic')">
+                View Details
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAR 5 -->
+
+        <div class="car-card reveal">
+
+            <img src="https://imagecdn.zigwheels.ae/large/gallery/exterior/40/1916/toyota-prado-80726.jpg">
+
+            <div class="car-content">
+
+                <h2>Toyota Prado</h2>
+
+                <div class="price">$95,000</div>
+
+                <div class="hp">305 Horsepower</div>
+
+                <button class="card-btn"
+                onclick="openCar('prado')">
+                View Details
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SPECIFICATIONS -->
+
+<section id="specs">
+
+    <h1 class="section-title reveal">
+    Specifications
+    </h1>
+
+    <div class="specs-container">
+
+        <div class="spec-box reveal">
+            <i class="fa-solid fa-gauge-high"></i>
+            <h2>Top Speed</h2>
+            <p>420 KM/H Ultra Performance</p>
+        </div>
+
+        <div class="spec-box reveal">
+            <i class="fa-solid fa-engine-warning"></i>
+            <h2>Engine</h2>
+            <p>V12 Twin Turbo Technology</p>
+        </div>
+
+        <div class="spec-box reveal">
+            <i class="fa-solid fa-bolt"></i>
+            <h2>Torque</h2>
+            <p>1100 Nm Instant Torque</p>
+        </div>
+
+        <div class="spec-box reveal">
+            <i class="fa-solid fa-road"></i>
+            <h2>Mileage</h2>
+            <p>18 KM/L Fuel Efficiency</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <h2 class="reveal">
+    Contact Us
+    </h2>
+
+    <p class="reveal">
+    Contact Naveed Motors for bookings and inquiries.
+    </p>
+
+    <div class="contact-info">
+
+        <div class="reveal">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:+923001234567">
+            +92 3000111538
+            </a>
+        </div>
+
+        <div class="reveal">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:NaveedNiazi@@2@email.com">
+            NaveedNiazi@@2@email.com
+            </a>
+        </div>
+
+        <div class="reveal">
+            <i class="fa-brands fa-instagram"></i>
+
+            <a href="https://www.instagram.com/imabdul_rahman?igsh=M3R1OGhhMWQ4MDVo="_blank">
+            @Naveedmotors
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="socials">
+
+        <a href="https://www.instagram.com/imabdul_rahman?igsh=M3R1OGhhMWQ4MDVo="_blank">
+        <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://facebook.com"
+        target="_blank">
+        <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+        <a href="https://twitter.com"
+        target="_blank">
+        <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+        <a href="https://youtube.com"
+        target="_blank">
+        <i class="fa-brands fa-youtube"></i>
+        </a>
+
+    </div>
+
+    <p>
+    © 2026 Velocity Motors — Premium Car Showcase
+    </p>
+
+</footer>
+
+<!-- MODAL -->
+
+<div class="car-modal" id="carModal">
+
+    <span class="close-btn"
+    id="closeModal">&times;</span>
+
+    <div class="modal-content">
+
+        <img id="modalImg" src="" alt="">
+
+        <div class="modal-text">
+
+            <h1 id="modalTitle"></h1>
+
+            <div class="modal-price"
+            id="modalPrice"></div>
+
+            <p id="modalDesc"></p>
+
+            <div class="modal-specs">
+
+                <div class="modal-box">
+                    <h3>Horsepower</h3>
+                    <p id="modalHp"></p>
+                </div>
+
+                <div class="modal-box">
+                    <h3>Top Speed</h3>
+                    <p id="modalSpeed"></p>
+                </div>
+
+                <div class="modal-box">
+                    <h3>Engine</h3>
+                    <p id="modalEngine"></p>
+                </div>
+
+                <div class="modal-box">
+                    <h3>Torque</h3>
+                    <p id="modalTorque"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ================= REVEAL ================= */
+
+const reveals = document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll', () => {
+
+    reveals.forEach((el) => {
+
+        const revealTop =
+        el.getBoundingClientRect().top;
+
+        const windowHeight =
+        window.innerHeight;
+
+        if(revealTop < windowHeight - 100){
+
+            el.classList.add('active');
+
+        }
+
+    });
+
+});
+
+/* ================= CAR DATA ================= */
+
+const carData = {
+
+    lambo: {
+
+        title:"Lamborghini X",
+
+        price:"$320,000",
+
+        hp:"950 HP",
+
+        speed:"420 KM/H",
+
+        engine:"V12 Twin Turbo",
+
+        torque:"1100 Nm",
+
+        image:"https://www.mansory.com/cdn-cgi/image/format=avif,quality=90/https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/698e39d4713ab648b25cb847_CarbonadoXMain.webp",
+
+        desc:"The Lamborghini X delivers futuristic aerodynamics, elite luxury interiors, and breathtaking performance."
+
+    },
+
+    ferrari: {
+
+        title:"Ferrari GT",
+
+        price:"$280,000",
+
+        hp:"870 HP",
+
+        speed:"390 KM/H",
+
+        engine:"V10 Hybrid",
+
+        torque:"980 Nm",
+
+        image:"https://hips.hearstapps.com/hmg-prod/images/2024-ferrari-812-gts-101-64caae4038b21.jpeg?crop=0.547xw:0.548xh;0.127xw,0.342xh&resize=1200:*",
+
+        desc:"Ferrari GT combines Italian luxury styling with advanced hybrid engineering."
+
+    },
+
+    bmw: {
+
+        title:"BMW Shadow",
+
+        price:"$190,000",
+
+        hp:"760 HP",
+
+        speed:"350 KM/H",
+
+        engine:"Twin Turbo V8",
+
+        torque:"850 Nm",
+
+        image:"https://www.lloydmotorgroup.com/VehicleLibrary/551625-1WdJvppmQkO35364bUtJjw.jpg?height=1297.5&heightratio=0.75&mode=crop&upscale=true&width=1730",
+
+        desc:"BMW Shadow delivers dark luxury styling with precision German performance."
+
+    },
+
+    civic: {
+
+        title:"Honda Civic RS",
+
+        price:"$45,000",
+
+        hp:"180 HP",
+
+        speed:"220 KM/H",
+
+        engine:"1.5L Turbo",
+
+        torque:"240 Nm",
+
+        image:"https://images.dealersync.com/2201/Photos/1015396/wm_04b6189bde7f45ec92681a593087d54c_1015396.jpg?format=webp&width=1530&_=b04422194d369706dd64d1ad8340d5adabcd58d8",
+
+        desc:"Honda Civic RS combines sporty styling with fuel efficiency and modern comfort."
+
+    },
+
+    prado: {
+
+        title:"Toyota Prado",
+
+        price:"$95,000",
+
+        hp:"305 HP",
+
+        speed:"210 KM/H",
+
+        engine:"4.0L V6",
+
+        torque:"500 Nm",
+
+        image:"https://imagecdn.zigwheels.ae/large/gallery/exterior/40/1916/toyota-prado-80726.jpg",
+
+        desc:"Toyota Prado offers luxury SUV comfort with powerful off-road capability."
+
+    }
+
+};
+
+/* ================= OPEN MODAL ================= */
+
+const modal =
+document.getElementById('carModal');
+
+function openCar(type){
+
+    modal.classList.add('active');
+
+    document.getElementById('modalTitle').innerHTML =
+    carData[type].title;
+
+    document.getElementById('modalPrice').innerHTML =
+    carData[type].price;
+
+    document.getElementById('modalHp').innerHTML =
+    carData[type].hp;
+
+    document.getElementById('modalSpeed').innerHTML =
+    carData[type].speed;
+
+    document.getElementById('modalEngine').innerHTML =
+    carData[type].engine;
+
+    document.getElementById('modalTorque').innerHTML =
+    carData[type].torque;
+
+    document.getElementById('modalImg').src =
+    carData[type].image;
+
+    document.getElementById('modalDesc').innerHTML =
+    carData[type].desc;
+
+}
+
+/* ================= CLOSE MODAL ================= */
+
+document.getElementById('closeModal')
+.addEventListener('click', () => {
+
+    modal.classList.remove('active');
+
+});
+
+/* CLOSE WHEN CLICK OUTSIDE */
+
+window.addEventListener('click', (e) => {
+
+    if(e.target === modal){
+
+        modal.classList.remove('active');
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
