@@ -47,6 +47,92 @@ section{
     font-weight:700;
 }
 
+ /* ================= AI CHAT ================= */
+
+.ai-chat-btn{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#0077ff,#00bfff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    cursor:pointer;
+    z-index:99999;
+    box-shadow:0 10px 30px rgba(0,119,255,.5);
+}
+
+.ai-chat-box{
+    position:fixed;
+    bottom:120px;
+    right:30px;
+    width:360px;
+    height:500px;
+    background:#111;
+    border-radius:25px;
+    overflow:hidden;
+    display:none;
+    flex-direction:column;
+    z-index:99999;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.ai-header{
+    background:linear-gradient(135deg,#0077ff,#00bfff);
+    padding:20px;
+    font-weight:700;
+    font-size:1.2rem;
+}
+
+.ai-messages{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.user-message,
+.bot-message{
+    padding:14px 18px;
+    margin-bottom:15px;
+    border-radius:18px;
+    max-width:85%;
+    line-height:1.6;
+}
+
+.user-message{
+    background:#0077ff;
+    margin-left:auto;
+}
+
+.bot-message{
+    background:#1f1f1f;
+}
+
+.ai-input-area{
+    display:flex;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.ai-input-area input{
+    flex:1;
+    background:#181818;
+    border:none;
+    padding:18px;
+    color:white;
+    outline:none;
+}
+
+.ai-input-area button{
+    border:none;
+    padding:18px 22px;
+    background:#00bfff;
+    color:white;
+    cursor:pointer;
+}
 /* ================= NAVBAR ================= */
 
 nav{
@@ -711,8 +797,8 @@ footer p{
 
         <div class="reveal">
             <i class="fa-solid fa-envelope"></i>
-            <a href="mailto:NaveedNiazi@@2@email.com">
-            naveedkhan@email.pk
+            <a href="mailto:NaveedKhan@email.pk">
+            NaveedKhan@email.pk
             </a>
         </div>
 
@@ -756,8 +842,45 @@ footer p{
     </div>
 
     <p>
-    © 2026 Naveed Motors — Premium Car Showcase
+    © 2026 Velocity Motors — Premium Car Showcase
     </p>
+
+      <!-- AI CHAT BUTTON -->
+
+<div class="ai-chat-btn" onclick="toggleChat()">
+    <i class="fa-solid fa-robot"></i>
+</div>
+
+<!-- AI CHAT BOX -->
+
+<div class="ai-chat-box" id="aiChatBox">
+
+    <div class="ai-header">
+        Naveed AI Assistant
+    </div>
+
+    <div class="ai-messages" id="aiMessages">
+
+        <div class="bot-message">
+            Hello 👋 Ask me about any car.
+        </div>
+
+    </div>
+
+    <div class="ai-input-area">
+
+        <input type="text"
+        id="aiInput"
+        placeholder="Ask about Honda Civic...">
+
+        <button onclick="sendAIMessage()">
+            Send
+        </button>
+
+    </div>
+
+</div>
+
 
 </footer>
 
@@ -999,6 +1122,110 @@ window.addEventListener('click', (e) => {
 
 });
 
+  /* ================= AI CHAT ================= */
+
+function toggleChat(){
+
+    const chat =
+    document.getElementById('aiChatBox');
+
+    if(chat.style.display === 'flex'){
+
+        chat.style.display = 'none';
+
+    }else{
+
+        chat.style.display = 'flex';
+
+    }
+
+}
+
+function addAIMessage(message,type){
+
+    const messages =
+    document.getElementById('aiMessages');
+
+    const div =
+    document.createElement('div');
+
+    div.className =
+    type === 'user'
+    ? 'user-message'
+    : 'bot-message';
+
+    div.innerHTML = message;
+
+    messages.appendChild(div);
+
+    messages.scrollTop =
+    messages.scrollHeight;
+
+}
+
+function sendAIMessage(){
+
+    const input =
+    document.getElementById('aiInput');
+
+    const text =
+    input.value.toLowerCase();
+
+    if(text === '') return;
+
+    addAIMessage(input.value,'user');
+
+    let found = false;
+
+    for(let key in carData){
+
+        if(text.includes(key) ||
+        text.includes(carData[key].title.toLowerCase())){
+
+            const car = carData[key];
+
+            const reply = `
+            🚗 <b>${car.title}</b><br><br>
+
+            💰 Price: ${car.price}<br>
+            ⚡ Horsepower: ${car.hp}<br>
+            🏎️ Top Speed: ${car.speed}<br>
+            🔥 Engine: ${car.engine}<br>
+            💪 Torque: ${car.torque}<br><br>
+
+            ${car.desc}
+            `;
+
+            setTimeout(()=>{
+
+                addAIMessage(reply,'bot');
+
+            },700);
+
+            found = true;
+
+            break;
+
+        }
+
+    }
+
+    if(!found){
+
+        setTimeout(()=>{
+
+            addAIMessage(
+            "Sorry, I couldn't find that car. Try asking about Lamborghini, Ferrari, BMW, Civic, or Prado.",
+            'bot'
+            );
+
+        },700);
+
+    }
+
+    input.value = '';
+
+}
 </script>
 
 </body>
